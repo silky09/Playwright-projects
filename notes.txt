@@ -1,0 +1,42 @@
+Locators: is a class in Playwright library
+
+1. page.getByAltText() - to locate an element, usually image, by its text alternative.
+2. page.getByPlaceholder() - to locate an input by placeholder.
+3. page.getByRole() to locate by explicit and implicit accessibility attributes.
+4. page.getByText() to locate by text content.
+
+5. page.getByLabel() to locate a form control by associated label's text.
+6. page.getByTitle() to locate an element by its title attribute.
+7. page.getByTestId() to locate an element based on its data-testid attribute (other attributes can be configured).
+
+
+----------------------------------------------------------------------------
+
+
+To find an object or element we use the syntax:::  
+---->  page.locator(selector[, options])
+
+Selectors e.g. ID, CSS, XPath, Class, Name, , Text, …
+
+Locator is a class in Playwright library
+
+------------
+
+1. //ID: id=user-name 
+await page.locator('id=user-name').fill('')
+
+2. //Xpath: //input[@name='password']
+    await page.locator('input[@name="password"]').fill('secret_sauce')
+
+other way:
+    await page.locator('xpath=input[@name="password"]').fill('secret_sauce')
+
+3. //CSS selector:  #login-button
+await page.locator('#login-button').click()
+
+
+4. //using Text: text visible in the page.
+await page.locator('text=Login').click()
+//for complicated text, 
+await page.locator('input:has-text("Login")').click()
+
