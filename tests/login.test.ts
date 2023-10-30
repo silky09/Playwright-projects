@@ -20,12 +20,15 @@ test('Login test', async ({ page }) => {
     await expect(logo).toContainText('Swag') // verify partial text
   
     //locators: ID 
-    //verify element is enabled or not: apply condition: if input box is enabled then fill the value.
+    //verify element is enabled or not: apply condition: 
+    //if input box is enabled then fill the value.
+    //then again verify the input field having the same value or not.
 
     const userName = await page.locator('id=user-name')
 
    if ([await expect(userName).toBeEnabled()]) {
      userName.fill('problem_user')
+     await expect(userName).toHaveValue('problem_user') //verify the input field having the same value or not.
    }
     
     //await page.locator('[id="password"]').fill('secret_sauce')
@@ -43,6 +46,16 @@ test('Login test', async ({ page }) => {
     if ([await expect(loginButton).toHaveAttribute('type', 'submit')]) {  //we are expecting 'type' attributes and its 'value'
       await loginButton.click()
     }
+
+    await page.pause()
+    //Visual validation using toHaveScreenshot()
+    await expect(page).toHaveScreenshot()
+
+    //verify dropdown list using .toHaveCount()
+
+    const sortingProducts = await page.locator("select[class='product_sort_container'] option")
+    //sortingProducts.click()
+    await expect(sortingProducts).toHaveCount(4)
 
 })
 

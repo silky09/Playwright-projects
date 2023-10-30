@@ -49,10 +49,13 @@ test('Verify Checkbox', async ({ page }) => {
    const selectNotes = await page.locator("//span[text()='Notes']")
    await selectNotes.click()
    await expect(selectNotes).toBeChecked()
+   
 
    //verify message: "You have selected :notes"
    const message2 = await page.locator("id=result")
    await expect(message2).toHaveText('You have selected :notes')
+   //verify -ve testing using not.toHaveText
+   await expect.soft(message2).not.toHaveText('Hello')
 
 })
 
