@@ -47,17 +47,29 @@ test('Login test', async ({ page }) => {
       await loginButton.click()
     }
 
-    await page.pause()
+
+    // product page:
+
+        await page.pause()
+        const headerTitle = await page.locator("span.title")
+        await expect(headerTitle).toHaveText('Products')
+        
     //Visual validation using toHaveScreenshot()
-    await expect(page).toHaveScreenshot()
-
+        await expect(page).toHaveScreenshot()
+    
     //verify dropdown list using .toHaveCount()
-
-    const sortingProducts = await page.locator("select[class='product_sort_container'] option")
+    
+        const sortingProducts = await page.locator("select[class='product_sort_container'] option")
     //sortingProducts.click()
-    await expect(sortingProducts).toHaveCount(4)
+        await expect(sortingProducts).toHaveCount(4)
+        
+    
+   
 
 })
+
+
+
 
 
 
