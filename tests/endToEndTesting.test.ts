@@ -85,7 +85,7 @@ await expect(headerTitle).toHaveText('Products')
   }
 
   await verifySorting1.click()
-  await page.pause()
+ 
 
   //click on checkout button: id=checkout
   const checkOut = await page.locator('id=checkout')
@@ -93,5 +93,27 @@ await expect(headerTitle).toHaveText('Products')
     await checkOut.click()
   }
 
-  
+  //EnterInformation in checkout page:
+  const enterInfo = await page.locator("//span[text()='Checkout: Your Information']")
+  await expect(enterInfo).toHaveText('Checkout: Your Information') 
+    
+  const FirstName = await page.locator('id=first-name')
+    //await expect(FirstName).toBeVisible()
+ if ([await expect(FirstName).toBeEnabled()]) {
+    await FirstName.fill('Silk')
+    await expect(FirstName).toHaveValue('Silk')
+ }   
+    
+
+  const LastName = await page.locator("input[data-test='lastName']")
+  if ([await expect(LastName).toBeEnabled()]) {
+    await LastName.fill("San")
+    //await expect(LastName).toHaveValue('San')
+  }
+
+  const PostalCode = await page.locator('id=postal-code')
+  if ([await expect(PostalCode).toBeEnabled()]) {
+    await PostalCode.fill("123456")
+  }
+  await page.pause()
 });

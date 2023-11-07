@@ -40,3 +40,10 @@ await page.locator('text=Login').click()
 //for complicated text, 
 await page.locator('input:has-text("Login")').click()
 
+
+
+
+----------------------------------------
+
+Soft and Hard assertions: 
+
