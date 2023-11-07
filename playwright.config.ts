@@ -1,12 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-
-  testDir: './tests',   //  './tests/demo'
-  /* Run tests in files in parallel */
-  fullyParallel: true,
+  testMatch: ["pom-test/endToendtest.test.ts"],  //adding new test dir
+  //testDir: './tests',   //  './tests/demo'
+  fullyParallel: true, ///* Run tests in files in parallel */
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
+ // forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   //retries: process.env.CI ? 2 : 0,
   retries: 0,
@@ -26,8 +25,8 @@ export default defineConfig({
     headless: false,
     viewport: { width: 1280, height: 720},
     actionTimeout: 15000,
-    screenshot: "on",
-    video: "on",
+    screenshot: "only-on-failure",
+    video: "retain-on-failure",
 
   },
 

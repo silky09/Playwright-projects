@@ -19,6 +19,7 @@ test('Login test', async ({ page }) => {
     await expect(logo).toBeVisible()  //Verify header text/element (logo) is visible or not 
     await expect(logo).toContainText('Swag') // verify partial text
   
+    //Login
     //locators: ID 
     //verify element is enabled or not: apply condition: 
     //if input box is enabled then fill the value.
