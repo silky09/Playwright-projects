@@ -1,8 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testMatch: ["pom-test/endToendtest.test.ts"],  //adding new test dir
-  //testDir: './tests',   //  './tests/demo'
+  //testMatch: ["pom-test/endToendtest.test.ts"],  //adding new test dir
+  testMatch: ["tests/endToEndTesting.test.ts"],
+  //testDir: './tests/',   //  './tests/demo'
   fullyParallel: true, ///* Run tests in files in parallel */
   /* Fail the build on CI if you accidentally left test.only in the source code. */
  // forbidOnly: !!process.env.CI,
