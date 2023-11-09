@@ -47,3 +47,29 @@ await page.locator('input:has-text("Login")').click()
 
 Soft and Hard assertions: 
 
+
+------------------------------
+
+// await LastName.focus(); // Focus the input field
+
+
+-----------------------------------
+
+
+    await expect(logo).toHaveText('Swag Labs')  //Verify complete text of the element
+    await expect(logo).toBeVisible()  //Verify header text/element (logo) is visible or not 
+    await expect(logo).toContainText('Swag') // verify partial text
+
+
+    ----------------------------------
+
+
+    //if input box is enabled then fill the value.
+    //then again verify the input field having the same value or not.
+
+    const userName = await page.locator('id=user-name')
+
+   if ([await expect(userName).toBeEnabled()]) {
+     userName.fill('problem_user')
+     await expect(userName).toHaveValue('problem_user') //verify the input field having the same value or not.
+
