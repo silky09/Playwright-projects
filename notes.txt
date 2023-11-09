@@ -73,3 +73,42 @@ Soft and Hard assertions:
      userName.fill('problem_user')
      await expect(userName).toHaveValue('problem_user') //verify the input field having the same value or not.
 
+     -----------------------------------------------------------------
+
+     // Page Object Model: it is also known as POM. it is a design pattern in test automation that creates an object repository for storing all elements.
+     It is useful in reducing code duplication and improves test case maintenance.
+
+     in POM, consider each web page as a class file.
+     within the pages, we write all the classes
+
+
+     ** we can not use page directly so we need to use constructor
+
+// Basic page template:
+
+    class HomePage {
+        page:any
+        constructor(page){
+        //then we need to initialize this page
+        this.page = page
+
+    }
+    }
+
+    export default HomePage
+
+   ///** 
+     --after defining Locators, we need to create  methods which will perform the action
+
+     ---------------------------------------------------------------------------
+
+
+
+//sortcuts:
+
+1. ctrl+B: hide and unhide the sidebar
+2. ctrl+J: open terminal
+
+
+// **to find the folder
+../../pages/
