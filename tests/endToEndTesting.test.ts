@@ -1,7 +1,16 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, chromium } from "@playwright/test";
 import exp from "constants";
 
 test("test", async ({ page }) => {
+
+  const browser = await chromium.launch()
+  const context = await browser.newContext({
+    recordVideo: {
+      dir: 'videos/',
+      size: { width: 800, height: 600 },
+    }
+  });
+  
   await page.goto("https://www.saucedemo.com/");
 
   // 1.Verify app URL
@@ -183,4 +192,7 @@ test("test", async ({ page }) => {
   if ([await expect(ClickLogout).toHaveText("Logout")]) {
     await ClickLogout.click();
   }
+
+  await context.close();
+  //await browser.close()
 });

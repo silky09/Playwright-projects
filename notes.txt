@@ -112,3 +112,11 @@ Soft and Hard assertions:
 
 // **to find the folder
 ../../pages/
+
+//generate new block statement
+** type 'new', it will generate new statement
+
+----------------------------------------------------
+
+** if u hover over the text and press "ctrl" the text becomes link.
+

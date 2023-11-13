@@ -1,8 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  //testMatch: ["pom-test/endToendtest.test.ts"],  //adding new test dir
-  testMatch: ["tests/endToEndTesting.test.ts"],
+  testMatch: ["pom-test/endToendtest.test.ts"],  //adding new test dir
+  //testMatch: ["tests/endToEndTesting.test.ts"],
   //testDir: './tests/',   //  './tests/demo'
   fullyParallel: true, ///* Run tests in files in parallel */
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -21,7 +21,7 @@ export default defineConfig({
   
   use: {
     
-    baseURL: "https://ecommerce-playground.lambdatest.io/index.php?", //add baseURL
+    baseURL: "https://www.saucedemo.com/", //add baseURL(end point): await page.goto(`${baseURL}route=account/register`)
     trace: 'on-first-retry',
     headless: false,
     viewport: { width: 1280, height: 720},
