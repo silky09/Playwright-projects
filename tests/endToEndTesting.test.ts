@@ -71,12 +71,14 @@ test("test", async ({ page }) => {
     .locator("//select[@data-test='product_sort_container']")
     .selectOption("lohi");
 
-  // Add to cart: cart page
+  
 
   const product1 = await page.locator("id=add-to-cart-sauce-labs-onesie");
   await product1.click();
   const product2 = await page.locator("id=add-to-cart-sauce-labs-bike-light");
   await product2.click();
+
+  // Add to cart: cart page
 
   //verify add to cart number of products is 2
   const verifySorting1 = await page.locator("div.shopping_cart_container");

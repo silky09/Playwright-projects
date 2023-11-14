@@ -8,6 +8,7 @@ class LoginPage {
     enterUserName: Locator;
     enterPassword: Locator;
     ClickLoginButton: Locator;
+    
 
   
 
@@ -17,6 +18,7 @@ class LoginPage {
         this.enterUserName = page.locator("id=user-name");
         this.enterPassword = page.locator('//input[@name="password"]');
         this.ClickLoginButton = page.locator("id=login-button");
+        
       
 
 }
