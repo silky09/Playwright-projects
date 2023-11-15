@@ -1,0 +1,16 @@
+
+
+{
+ "myUserName" : "standard_user",
+ "myPassword" : "secret_sauce",
+ "myFirstName" : "Silk",
+ "myLastName" : "San",
+ "myPostalCode" : "1234567",
+ "Products" : "Products",
+ "Continue_Shopping" : "Continue Shopping",
+ "Checkout" : "Checkout",
+ "Remove" : "Remove",
+ "standard_user" : "standard_user",
+ "Swag_Labs" : "Swag Labs",
+ "Swag" : "Swag"  
+}

@@ -120,3 +120,47 @@ Soft and Hard assertions:
 
 ** if u hover over the text and press "ctrl" the text becomes link.
 
+-------------------------------------------------------------
+
+
+  //await FirstName.fill('Silk') //pressSequentially()
+    //In most cases, you should use locator.fill(value[, options]) instead. You only need to press keys one by one if there is special keyboard handling on the page -
+    //in this case use locator.pressSequentially(text, {delay:200}]).
+
+
+    -----------------------------
+
+
+    Page:    
+    async enterFirstName(firstName:string) {
+        await this.page.locator("input#first-name").fill("Silk");
+    }
+
+    async enterLastName(lastName:string) {
+        await this.page.locator("input#last-name").fill("San");;
+    }
+
+    async enterPostalCode(postalCode:string) {
+        await this.page.locator("id=postal-code").fill("123456");;
+    }
+
+
+    -----------------------------------------------
+
+    storing data as variable
+
+    /* const myUserName = "standard_user"
+const myPassword = "secret_sauce"
+const myFirstName = "Silky"
+const myLastName = "San"
+const myPostalCode = "1234567"
+const Products = "Products"
+const Continue_Shopping = "Continue Shopping"
+const Checkout = "Checkout"
+const Remove = "Remove"
+const standard_user = "standard_user"
+const Swag_Labs = "Swag Labs"
+const Swag = "Swag"  */
+
+
+----------------------------------------
