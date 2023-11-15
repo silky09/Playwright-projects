@@ -8,6 +8,7 @@ export default class ProductPage {
     verifySorting: Locator;
     addProduct1: Locator;
     addProduct2: Locator;
+    addNewProduct: Locator;
    
     constructor(page: Page) {
         this.page = page;
@@ -17,5 +18,7 @@ export default class ProductPage {
         this.verifySorting = page.locator("//select[@data-test='product_sort_container']")
         this.addProduct1 = page.locator("id=add-to-cart-sauce-labs-onesie");
         this.addProduct2 = page.locator("id=add-to-cart-sauce-labs-bike-light");
+        this.addNewProduct = page.locator("id=add-to-cart-sauce-labs-backpack")
+
     }
 }

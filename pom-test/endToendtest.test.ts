@@ -13,6 +13,7 @@ test("LoginUser", async ({ page, baseURL }) => {
 
   const login = new LoginPage(page);
   const productPage = new ProductPage(page);
+  const cartPage = new CartPage(page)
   await page.goto(`${baseURL}`)
 
   // 1.Verify app URL
@@ -82,6 +83,45 @@ test("LoginUser", async ({ page, baseURL }) => {
   await page.pause()
 
   //3. Cart Page
+
+  
+  //verify add to cart number of products is 2
+  const verifyCart1 = await cartPage.verifySorting1
+
+  if ([await expect(verifyCart1).toHaveText("2")]) {
+    await verifyCart1.click();
+  }
+
+    // remove the product
+    const removeProduct = await cartPage.removeProduct
+
+    if ([await expect(removeProduct).toHaveText("Remove")]) {
+      await cartPage.removeProduct.click();
+    }
+
+      //verify add to cart number of products is 1
+  const verifyCartAfterRemoving = await cartPage.verifyCartAfterRemoving
+  await expect(verifyCartAfterRemoving).toHaveText("1");
+
+  //click on Continue shopping to add new product:
+
+  const ContinueShopping = await cartPage.ContinueShopping
+  if ([await expect(ContinueShopping).toContainText("Continue Shopping")]) {
+    await ContinueShopping.click();
+  }
+
+  //verify inventory page and add new product:
+  if ([await expect(headerTitle).toHaveText("Products")]) {
+    await productPage.addNewProduct.click()
+  }
+
+  await verifyCart1.click();
+
+   //click on checkout button
+   const checkOut = await cartPage.checkout
+   if ([await expect(checkOut).toHaveText("Checkout")]) {
+     await checkOut.click();
+   }
 
 })
 
