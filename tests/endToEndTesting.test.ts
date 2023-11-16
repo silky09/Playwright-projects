@@ -4,7 +4,7 @@ import exp from "constants";
 test("test", async ({ page }) => {
 
   const browser = await chromium.launch()
-  const context = await browser.newContext({
+  const context = await browser.newContext({  // to capture video
     recordVideo: {
       dir: 'videos/',
       size: { width: 800, height: 600 },

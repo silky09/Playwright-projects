@@ -6,17 +6,19 @@ import CartPage from "../pages/3CartPage"
 import CheckoutInfoPage from "../pages/4CheckoutInfoPage"
 import CheckoutOverviewPage from "../pages/5CheckoutOverviewPage"
 import CheckoutCompletePage from "../pages/6CheckoutCompletePage"
+import LogoutPage  from "../pages/7LogoutPage";
 
 const testData = JSON.parse(fs.readFileSync(`./pom-test/testData/data.json`, `utf-8`))
 
-test("LoginUser", async ({ page, baseURL }) => {
+test("EndToEnd_Flow", async ({ page, baseURL }) => {
 
   const login = new LoginPage(page);
   const productPage = new ProductPage(page);
   const cartPage = new CartPage(page);
   const checkoutInfoPage = new CheckoutInfoPage(page);
   const checkoutOverviewPage = new CheckoutOverviewPage(page);
-  const checkoutCompletePage = new CheckoutCompletePage(page)
+  const checkoutCompletePage = new CheckoutCompletePage(page);
+  const logoutPage = new LogoutPage(page);
 
   await page.goto(`${baseURL}`)
   await expect(page).toHaveURL(`${baseURL}`)  // Verify app URL
@@ -162,12 +164,28 @@ test("LoginUser", async ({ page, baseURL }) => {
 
   //checkoutCompletePage
   const verifyCheckoutCompleteText = await checkoutCompletePage.verifyCheckoutCompleteText
-  await expect(verifyCheckoutCompleteText).toHaveText(testData.Checkout_Complete!);  // /Checkout: Complete!/
+  await expect(verifyCheckoutCompleteText).toHaveText(testData.Checkout_Complete)  // /Checkout: Complete!/
 
   const verifyConfirmOrder = await checkoutCompletePage.verifyConfirmOrder
-  if ([await expect(verifyConfirmOrder).toContainText(testData.Thank_you_for_your_order!)]) {
+  if ([await expect(verifyConfirmOrder).toContainText(testData.Thank_you_for_your_order)]) {
     await checkoutCompletePage.BackHome_Button.click();
   }
+
+
+//?--------------------------------------------------------------------------------
+
+// 7. Logout Page: //Inventory page: Hamburger menu >> Logout
+
+const HamburgerMenu = await logoutPage.HamburgerMenu
+  if ([await expect(HamburgerMenu).toBeVisible()]) {
+    await HamburgerMenu.click();
+  }
+
+  const LogoutButton = await logoutPage.LogoutButton
+  if ([await expect(LogoutButton).toHaveText(testData.Logout)]) { //verify text: Logout
+    await LogoutButton.click();
+  }
+
 
 })
 
