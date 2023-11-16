@@ -16,7 +16,7 @@ test("LoginUser", async ({ page, baseURL }) => {
   const cartPage = new CartPage(page);
   const checkoutInfoPage = new CheckoutInfoPage(page);
   const checkoutOverviewPage = new CheckoutOverviewPage(page);
-
+  const checkoutCompletePage = new CheckoutCompletePage(page)
 
   await page.goto(`${baseURL}`)
   await expect(page).toHaveURL(`${baseURL}`)  // Verify app URL
@@ -114,7 +114,7 @@ test("LoginUser", async ({ page, baseURL }) => {
   //?-------------------------------------------------------------
 
 
-  // checkoutInfo page: (EnterInformation)
+  // 4. checkoutInfo page: (EnterInformation)
 
   const checkOutHeaderText = await checkoutInfoPage.checkOutHeaderText
   await expect(checkOutHeaderText).toHaveText(testData.Checkout_Your_Information);
@@ -145,7 +145,7 @@ test("LoginUser", async ({ page, baseURL }) => {
 
   //?---------------------------------------------------------------------------------
 
-  //checkout overview page: verify text "Checkout: Overview" and Total: $41.02
+  // 5. Checkout Overview page: verify text "Checkout: Overview" and Total: $41.02
 
   const verifyOverviewText = await checkoutOverviewPage.verifyOverviewText
   await expect(verifyOverviewText).toHaveText(testData.Checkout_Overview);
@@ -155,6 +155,19 @@ test("LoginUser", async ({ page, baseURL }) => {
     await checkoutOverviewPage.FinishButton.click();
   }
 
+
+  //?--------------------------------------------------------------------------
+
+  // 6. Checkout Complete page: //verify text "Checkout: Complete!" and message: "Thank you for your order!"
+
+  //checkoutCompletePage
+  const verifyCheckoutCompleteText = await checkoutCompletePage.verifyCheckoutCompleteText
+  await expect(verifyCheckoutCompleteText).toHaveText(testData.Checkout_Complete!);  // /Checkout: Complete!/
+
+  const verifyConfirmOrder = await checkoutCompletePage.verifyConfirmOrder
+  if ([await expect(verifyConfirmOrder).toContainText(testData.Thank_you_for_your_order!)]) {
+    await checkoutCompletePage.BackHome_Button.click();
+  }
 
 })
 

@@ -16,6 +16,8 @@
  "lohi" : "lohi",
  "Checkout_Your_Information": "Checkout: Your Information",
  "Checkout_Overview": "Checkout: Overview",
- "Total: $41.02": "Total: $41.02"
+ "Total: $41.02": "Total: $41.02",
+ "Checkout_Complete!": "Checkout: Complete!",
+ "Thank_you_for_your_order!" :"Thank you for your order!"
  
 }
