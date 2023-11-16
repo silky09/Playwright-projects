@@ -26,11 +26,11 @@ test("LoginUser", async ({ page, baseURL }) => {
   await expect(logo).toBeVisible()
   await expect(logo).toContainText(testData.Swag)
 
-//?---------------------------------------------------------------------------------
-  
-//1. Login page:  Enter username, Enter password and click Login button.
+  //?---------------------------------------------------------------------------------
 
- 
+  //1. Login page:  Enter username, Enter password and click Login button.
+
+
   const userName = await login.enterUserName;
 
   if ([await expect(userName).toBeEnabled()]) {
@@ -50,9 +50,9 @@ test("LoginUser", async ({ page, baseURL }) => {
     await loginButton.click();
   }
 
-//?------------------------------------------------------------------------------------
-  
-//2. Product page
+  //?------------------------------------------------------------------------------------
+
+  //2. Product page
 
   const headerTitle = await productPage.headerTitle;
   await expect(headerTitle).toHaveText(testData.Products);
@@ -63,7 +63,7 @@ test("LoginUser", async ({ page, baseURL }) => {
   await sortingProducts.click({ force: true });
 
 
-  
+
   const verifySorting = await productPage.verifySorting //verify sorting
     .selectOption(testData.lohi)
 
@@ -71,13 +71,13 @@ test("LoginUser", async ({ page, baseURL }) => {
   await productPage.addProduct2.click();
 
 
-//?---------------------------------------------------------------------------------------------
-  
-//3. Cart Page: verify number of product in the cart, Remove product, reverify cart, click continue button
+  //?---------------------------------------------------------------------------------------------
+
+  //3. Cart Page: verify number of product in the cart, Remove product, reverify cart, click continue button shopping button to add new product
 
 
-  
-  const verifyCart1 = await cartPage.verifySorting1  //verify add to cart: number of products is 2
+
+  const verifyCart1 = await cartPage.verifySorting1  // verify add to cart: number of products is 2
   if ([await expect(verifyCart1).toHaveText("2")]) {
     await verifyCart1.click();
   }
@@ -89,59 +89,60 @@ test("LoginUser", async ({ page, baseURL }) => {
     await cartPage.removeProduct.click();
   }
 
-  const verifyCartAfterRemoving = await cartPage.verifyCartAfterRemoving  //verify number of products is 1 after removing
+  const verifyCartAfterRemoving = await cartPage.verifyCartAfterRemoving  // verify number of products is 1 after removing
   await expect(verifyCartAfterRemoving).toHaveText("1");
 
-  //click on Continue shopping to add new product:
-
-  const ContinueShoppingButton = await cartPage.ContinueShopping
+  const ContinueShoppingButton = await cartPage.ContinueShoppingButton   // click on Continue shopping button to add new product:
   if ([await expect(ContinueShoppingButton).toContainText(testData.Continue_Shopping)]) {
     await ContinueShoppingButton.click();
   }
 
-  //verify inventory page and add new product:
-  if ([await expect(headerTitle).toHaveText(testData.Products)]) {
+
+  if ([await expect(headerTitle).toHaveText(testData.Products)]) {  //verify inventory/product page and add new product
     await productPage.addNewProduct.click()
   }
 
   await verifyCart1.click();
 
-  //click on checkout button
-  const checkOutButton = await cartPage.checkOutButton
+
+  const checkOutButton = await cartPage.checkOutButton  // click on checkout button
   if ([await expect(checkOutButton).toHaveText(testData.Checkout)]) {
     await checkOutButton.click();
   }
 
-  //-------------------------------------------------------------
+  //?-------------------------------------------------------------
 
 
-  // checkout page: (EnterInformation)
+  // checkoutInfo page: (EnterInformation)
 
   const checkOutHeaderText = await checkoutInfoPage.checkOutHeaderText
   await expect(checkOutHeaderText).toHaveText(testData.Checkout_Your_Information);
 
-  const FirstName = await checkoutInfoPage.enterFirstName
+  const FirstName = await checkoutInfoPage.enterFirstName // enter firstName and verify
   if ([await expect(FirstName).toBeEnabled()]) {
     await FirstName.fill(testData.myFirstName);
-
     await expect(FirstName).toHaveValue(testData.myFirstName);
   }
 
-  const LastName = await checkoutInfoPage.enterLastName
+  const LastName = await checkoutInfoPage.enterLastName // enter lastName and verify
   if ([await expect(LastName).toBeEnabled()]) {
     await LastName.fill(testData.myLastName);
     await expect(LastName).toHaveValue(testData.myLastName);
   }
 
-  const PostalCode = await checkoutInfoPage.enterPostalCode
+  const PostalCode = await checkoutInfoPage.enterPostalCode  // enter postcode and verify
   if ([await expect(PostalCode).toBeEnabled()]) {
     await PostalCode.fill(testData.myPostalCode);
+    await expect(PostalCode).toHaveValue(testData.myPostalCode);
   }
 
-  const ContinueButton = await checkoutInfoPage.ContinueButton
+  const ContinueButton = await checkoutInfoPage.ContinueButton // click continue button
   if ([await expect(ContinueButton).toBeEnabled()]) {
     await ContinueButton.click();
   }
+
+
+  //?---------------------------------------------------------------------------------
 
 
 })

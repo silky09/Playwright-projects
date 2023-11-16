@@ -5,7 +5,7 @@ export default class CartPage {
     verifySorting1: Locator;
     removeProduct: Locator;
     verifyCartAfterRemoving: Locator;
-    ContinueShopping: Locator;
+    ContinueShoppingButton: Locator;
     addNewProduct: Locator;
     checkOutButton: Locator;
    
@@ -14,7 +14,7 @@ export default class CartPage {
        this.verifySorting1 = page.locator("div.shopping_cart_container")
        this.removeProduct = page.locator("id=remove-sauce-labs-bike-light")
        this.verifyCartAfterRemoving = page.locator("div.shopping_cart_container")
-       this.ContinueShopping = page.locator("id=continue-shopping");
+       this.ContinueShoppingButton = page.locator("id=continue-shopping");
        this.checkOutButton = page.locator("id=checkout");
     }
 }
