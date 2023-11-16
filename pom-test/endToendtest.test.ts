@@ -15,6 +15,7 @@ test("LoginUser", async ({ page, baseURL }) => {
   const productPage = new ProductPage(page);
   const cartPage = new CartPage(page);
   const checkoutInfoPage = new CheckoutInfoPage(page);
+  const checkoutOverviewPage = new CheckoutOverviewPage(page);
 
 
   await page.goto(`${baseURL}`)
@@ -143,6 +144,16 @@ test("LoginUser", async ({ page, baseURL }) => {
 
 
   //?---------------------------------------------------------------------------------
+
+  //checkout overview page: verify text "Checkout: Overview" and Total: $41.02
+
+  const verifyOverviewText = await checkoutOverviewPage.verifyOverviewText
+  await expect(verifyOverviewText).toHaveText(testData.Checkout_Overview);
+
+  const verifyTotalPrice = await checkoutOverviewPage.verifyTotalPrice
+  if ([await expect(verifyTotalPrice).toContainText("Total: $41.02")]) {
+    await checkoutOverviewPage.FinishButton.click();
+  }
 
 
 })
