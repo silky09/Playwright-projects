@@ -75,7 +75,7 @@ test("LoginUser", async ({ page, baseURL }) => {
 
   //verify sorting
   const verifySorting = await productPage.verifySorting
-  .selectOption("lohi")
+  .selectOption(testData.lohi)
 
   
 
