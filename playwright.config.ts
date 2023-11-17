@@ -4,6 +4,7 @@ export default defineConfig({
   /* testMatch: ["pom-test/endToendtest.test.ts"], */  //adding new test dir
   testMatch: ["pom-test/CompleteTest.test.ts"],
   //testMatch: ["tests/endToEndTesting.test.ts"],
+   //testMatch: ["tests/endToendtest.test.ts"],
   //testDir: './tests/',   //  './tests/demo'
   fullyParallel: true, ///* Run tests in files in parallel */
   /* Fail the build on CI if you accidentally left test.only in the source code. */
