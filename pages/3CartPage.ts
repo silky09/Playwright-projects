@@ -8,6 +8,8 @@ export default class CartPage {
     ContinueShoppingButton: Locator;
     addNewProduct: Locator;
     checkOutButton: Locator;
+    verifyHeaderTitle: Locator;
+    newProductAdd: Locator;
    
     constructor(page: Page) {
        this.page = page
@@ -16,5 +18,7 @@ export default class CartPage {
        this.verifyCartAfterRemoving = page.locator("div.shopping_cart_container")
        this.ContinueShoppingButton = page.locator("id=continue-shopping");
        this.checkOutButton = page.locator("id=checkout");
+       this.verifyHeaderTitle = page.locator("span.title")
+       this.newProductAdd = page.locator("#add-to-cart-sauce-labs-fleece-jacket")
     }
 }

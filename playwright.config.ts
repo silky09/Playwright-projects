@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testMatch: ["pom-test/endToendtest.test.ts"],  //adding new test dir
+  /* testMatch: ["pom-test/endToendtest.test.ts"], */  //adding new test dir
+  testMatch: ["pom-test/CompleteTest.test.ts"],
   //testMatch: ["tests/endToEndTesting.test.ts"],
   //testDir: './tests/',   //  './tests/demo'
   fullyParallel: true, ///* Run tests in files in parallel */
@@ -28,6 +29,9 @@ export default defineConfig({
     actionTimeout: 15000,
     screenshot: "only-on-failure",
     video: "on", //video: "retain-on-failure",
+    launchOptions:{  //for slow execution
+      slowMo: 1000
+    }
 
   },
 

@@ -19,6 +19,7 @@ export default class ProductPage {
         this.addProduct1 = page.locator("id=add-to-cart-sauce-labs-onesie");
         this.addProduct2 = page.locator("id=add-to-cart-sauce-labs-bike-light");
         this.addNewProduct = page.locator("id=add-to-cart-sauce-labs-backpack")
+        
 
     }
 }
