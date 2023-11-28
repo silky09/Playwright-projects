@@ -50,7 +50,7 @@ test.describe("MyCompleteTest", () => {
     test('HomePage: ProductPage, CartPage, CheckoutInfoPage, CheckoutOverviewPage, CheckoutCompletePage', async ({ page }) => {
 
         const productPage = new ProductPage(page);
-        console.log("userData:", testData);
+        //console.log("userData:", testData);
 
        /*  console.log("userName:", testData.myUserName);
         console.log("password:", testData.myPassword); */
