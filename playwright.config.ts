@@ -19,7 +19,7 @@ export default defineConfig({
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   //reporter: 'html',
-  reporter: [["dot"], ["json", { outputFile: 'test-results.json' }]],
+  reporter: [["dot"], ["json", { outputFile: 'test-results.json' }]], // create json report
   //reporter: [["dot"], ["json", { outputFolder: 'test-results' }]],
   
  
@@ -34,10 +34,10 @@ export default defineConfig({
     screenshot: "only-on-failure",
     //video: "on", 
     video: "retain-on-failure",
-    launchOptions:{  //for slow execution
+   /*  launchOptions:{  //for slow execution
       slowMo: 1000
     }
-
+ */
   },
 
   /* Configure projects for major browsers */
