@@ -33,7 +33,8 @@ export default defineConfig({
     headless: false,
     viewport: { width: 1280, height: 720},
     actionTimeout: 15000,
-    screenshot: "only-on-failure",
+    //screenshot: "only-on-failure",
+    screenshot: "on",
     video: "on", 
     //video: "retain-on-failure",
    /*  launchOptions:{  //for slow execution
