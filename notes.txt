@@ -182,3 +182,8 @@ jobs:
           run: npx playwright install --with-deps
         - name: Run tests
           run: npx playwright test pom-test/CompleteTest.test.ts 
+
+
+// generate allure report: npx allure generate allure-results --clean && npx allure open
+
+or: allure serve

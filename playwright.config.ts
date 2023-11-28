@@ -19,9 +19,11 @@ export default defineConfig({
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   //reporter: 'html',
+  //reporter: [['html'], ['list'], ['dot'], ['json']], // generate report in various forms, HTML and list 
  // reporter: [["dot"], ["json", { outputFile: 'test-results.json' }]], // create json report
-  reporter: [["dot"], ["json", { outputFolder: 'test-results' }]],
+  //reporter: [["dot"], ["json", { outputFolder: 'test-results' }]],
   
+ reporter: [["line"], ["allure-playwright"]],
  
   
   use: {
