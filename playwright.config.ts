@@ -29,7 +29,7 @@ export default defineConfig({
   use: {
     
     baseURL: "https://www.saucedemo.com/", //add baseURL(end point): await page.goto(`${baseURL}route=account/register`)
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure', // to get trace file for failed test 
     headless: false,
     viewport: { width: 1280, height: 720},
     actionTimeout: 15000,
