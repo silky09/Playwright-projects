@@ -187,3 +187,11 @@ jobs:
 // generate allure report: npx allure generate allure-results --clean && npx allure open
 
 or: allure serve
+
+-----------------------------
+//git config --global user.email "you@example.com"
+//git config --global user.name "Your Name"
+
+--------------------------------------------
+
+npm init playwright@latest
