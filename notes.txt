@@ -12,7 +12,15 @@ Locators: is a class in Playwright library
 
 ----------------------------------------------------------------------------
 
-
+Red (!)
+Blue (?)
+Green (*)
+Yellow (^)
+Pink (&)
+Purple (~)
+Mustard (todo)
+Grey (//)
+..................................................................
 To find an object or element we use the syntax:::  
 ---->  page.locator(selector[, options])
 
