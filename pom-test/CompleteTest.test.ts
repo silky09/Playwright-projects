@@ -112,7 +112,7 @@ test.describe("MyCompleteTest", () => {
         //?-----------
 
         const checkoutInfoPage = new CheckoutInfoPage(page);
-
+    
 
         const checkOutHeaderText = await checkoutInfoPage.checkOutHeaderText
         await expect(checkOutHeaderText).toHaveText(testData.Checkout_Your_Information);
@@ -122,12 +122,13 @@ test.describe("MyCompleteTest", () => {
             await FirstName.fill(testData.myFirstName);
             await expect(FirstName).toHaveValue(testData.myFirstName);
         }
-
+ 
         const LastName = await checkoutInfoPage.enterLastName // enter lastName and verify
         if ([await expect(LastName).toBeEnabled()]) {
             await LastName.fill(testData.myLastName);
             await expect(LastName).toHaveValue(testData.myLastName);
         }
+      
 
         const PostalCode = await checkoutInfoPage.enterPostalCode  // enter postcode and verify
         if ([await expect(PostalCode).toBeEnabled()]) {

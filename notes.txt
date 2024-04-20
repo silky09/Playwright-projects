@@ -54,6 +54,7 @@ await page.locator('input:has-text("Login")').click()
 ----------------------------------------
 
 Soft and Hard assertions: 
+await expect.soft(AddMenu).toBeEnabled()
 
 
 ------------------------------
@@ -83,7 +84,8 @@ Soft and Hard assertions:
 
      -----------------------------------------------------------------
 
-     // Page Object Model: it is also known as POM. it is a design pattern in test automation that creates an object repository for storing all elements.
+     // Page Object Model: it is also known as POM. it is a design pattern in test automation 
+     that creates an object repository for storing all elements.
      It is useful in reducing code duplication and improves test case maintenance.
 
      in POM, consider each web page as a class file.
@@ -94,6 +96,10 @@ Soft and Hard assertions:
 
 // Basic page template:
 
+1. import {  } from "module";
+
+2. type class and enter: it will create a block
+
     class HomePage {
         page:any
         constructor(page){
@@ -103,7 +109,7 @@ Soft and Hard assertions:
     }
     }
 
-    export default HomePage
+3.   export default HomePage
 
    ///** 
      --after defining Locators, we need to create  methods which will perform the action
@@ -190,9 +196,12 @@ jobs:
           run: npx playwright install --with-deps
         - name: Run tests
           run: npx playwright test pom-test/CompleteTest.test.ts 
+----------------------------------------------------
 
 
-// generate allure report: npx allure generate allure-results --clean && npx allure open
+// generate allure report: 
+
+npx allure generate allure-results --clean && npx allure open
 
 or: allure serve
 
@@ -203,3 +212,77 @@ or: allure serve
 --------------------------------------------
 
 npm init playwright@latest
+npx playwright codegen  (generate the code)
+
+--------------------------
+
+multi line comments:
+
+alt + shift + A
+----------------------
+
+to access camera and microphone:
+
+You just need to update "playwright.config.ts" file where you set up browser under different project.
+
+{
+   name: 'chromium',
+   use:{
+      permissions: ["camera"]
+   }
+}
+You can also provide the permission of microphone together like below
+
+ {
+      name: 'chromium',
+      use:{
+        permissions: ["microphone","camera"]
+      }
+}
+
+------------------------------------
+
+//clicking on elements within an SVG using XPath Playwright
+
+locator("//i[@class='n-base-icon']/*[name()='svg']")
+
+
+-----------------------------------------------------
+
+
+1. npx playwright test --ui  (Opening UI Mode)
+2. npx playwright test --worker=1 (run the test in a single web browser)
+3. npx playwright test --debug (debugging the test) 
+npx playwright test machine:21 --debug (debug starting from specific line where test starts)
+
+4. npx playwright test --headless (run test in a headless mode; no GUI comes up in the screen)
+
+//using tags: @sanity, @smoke, ----> test("Test Signin page @smoke")
+5. npx playwright test --grep "@smoke"   or -g "@smoke"
+
+
+Hooks: beforeAll, beforeEach, afterAll, afterEach
+
+Groups: describe
+
+Annotations: only, skip, skip with condition, fail, fixme, slow (it is used to control execution of the test.)
+
+Tags: @smoke, @reg, @sanity, @fast, @slow (run the test that have the certain tags)
+- put tags within the title of the test inside " "-
+- use grep keyword, --grep "@smoke"   or -g "@smoke"
+
+--------------------------
+Checkbox:
+// Asserts that checkbox is un-checked.
+1. await expect(await typePage.CheckBox_2.isChecked()).toBeFalsy();
+//Asserts that checkbox is checked.
+ await expect(typePage.CheckBox_2.isChecked()).toBeTruthy();
+
+--------------------
+screenshot: 
+
+Here is a quick way to capture a screenshot and save it into a file:
+
+await page.screenshot({ path: 'screenshot.png' });
+
+await page.screenshot({ path: './screenshots/refreshMachineAsset_data.png'});
